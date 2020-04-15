@@ -1,26 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Button } from 'semantic-ui-react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+interface IAppProps {
+}
+interface IState {
+  changeColor: string;
 }
 
-export default App;
+export default class App extends React.Component<IAppProps, IState> {
+  constructor(props: IAppProps) {
+    super(props);
+    this.state = {
+      changeColor: ""
+    }
+    console.log("We are in constructor() method..");
+  }
+
+  changeColor = () => {
+    console.log("Now we are in changeColor() Method withch is going to be yellow..");
+    this.setState({ changeColor: "Yellow" });
+  }
+
+  componentDidMount() {
+    console.log("Component is created and we are in componentDidMount() function..");
+    this.setState({ changeColor: "Blue" });
+  }
+
+  render() {
+    console.log("We are in render() function");
+    return (
+      <div style={{ backgroundColor: this.state.changeColor }}  >
+        <h1>{this.state.changeColor}</h1>
+        <Button color="red" size="large" content="Press button to change the background color" onClick={this.changeColor} />
+      </div>
+    );
+  }
+}
