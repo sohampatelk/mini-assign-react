@@ -31,7 +31,7 @@ export default class App extends React.Component<IAppProps, IState> {
     return (
       <div style={{ backgroundColor: this.state.changeColor }}  >
         <h1>{this.state.changeColor}</h1>
-        <Button color="red" size="large" content="Press button to change the background color" onClick={this.changeColor} />
+        <Button color="blue" size="large" content="Press button to change the background color" onClick={this.changeColor} />
       </div>
     );
   }
